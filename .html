@@ -1,0 +1,185 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Ticket Booking System
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-white shadow">
+   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+     <img alt="Ticket icon, a stylized ticket stub in blue and white" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/0c50427b-90b2-494b-d75b-1439a9003551.jpg" width="40"/>
+     <h1 class="text-2xl font-semibold text-gray-800">
+      Ticket Booking System
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-gray-600 font-medium">
+     <a class="hover:text-blue-600 transition" href="#">
+      Home
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Events
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      My Bookings
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Contact
+     </a>
+    </nav>
+    <button aria-label="Open menu" class="md:hidden text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600" id="mobile-menu-button">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Mobile menu" class="md:hidden bg-white border-t border-gray-200 hidden" id="mobile-menu">
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition" href="#">
+     Home
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition" href="#">
+     Events
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition" href="#">
+     My Bookings
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition" href="#">
+     Contact
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow container mx-auto px-4 py-8">
+   <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">
+    Book Your Tickets
+   </h2>
+   <section class="max-w-4xl mx-auto bg-white rounded-lg shadow p-6">
+    <form class="space-y-6" id="booking-form">
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="event">
+       Select Event
+      </label>
+      <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="event" name="event" required="">
+       <option disabled="" selected="" value="">
+        Select an event
+       </option>
+       <option value="concert">
+        Live Concert - The Rockers
+       </option>
+       <option value="theater">
+        Theater Play - Hamlet
+       </option>
+       <option value="sports">
+        Football Match - City FC vs United
+       </option>
+       <option value="conference">
+        Tech Conference 2024
+       </option>
+       <option value="comedy">
+        Stand-up Comedy Night
+       </option>
+      </select>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="date">
+       Select Date
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="date" min="" name="date" required="" type="date"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="tickets">
+       Number of Tickets
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="tickets" max="10" min="1" name="tickets" required="" type="number" value="1"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="name">
+       Full Name
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="name" name="name" placeholder="John Doe" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="email">
+       Email Address
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" name="email" placeholder="john@example.com" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="phone">
+       Phone Number
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="phone" name="phone" pattern="^\+?[0-9\s\-]{7,15}$" placeholder="+1 234 567 8900" required="" type="tel"/>
+     </div>
+     <button class="w-full bg-blue-600 text-white font-semibold py-3 rounded-md hover:bg-blue-700 transition" type="submit">
+      Book Tickets
+     </button>
+    </form>
+   </section>
+   <section class="max-w-4xl mx-auto mt-10 hidden bg-green-50 border border-green-300 rounded-lg p-6 text-green-800" id="confirmation">
+    <h3 class="text-2xl font-semibold mb-4 flex items-center space-x-2">
+     <i class="fas fa-check-circle text-green-600">
+     </i>
+     <span>
+      Booking Confirmed!
+     </span>
+    </h3>
+    <p class="text-lg" id="confirmation-message">
+    </p>
+   </section>
+  </main>
+  <footer class="bg-white border-t border-gray-200 py-6 mt-12">
+   <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
+    © 2024 Ticket Booking System. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   // Set minimum date for date input to today
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Booking form submission
+    const bookingForm = document.getElementById('booking-form');
+    const confirmationSection = document.getElementById('confirmation');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(bookingForm);
+      const eventName = bookingForm.event.options[bookingForm.event.selectedIndex].text;
+      const date = formData.get('date');
+      const tickets = formData.get('tickets');
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+
+      confirmationMessage.innerHTML = `
+        Thank you, <strong>${name}</strong>, for booking <strong>${tickets}</strong> ticket(s) to <strong>${eventName}</strong> on <strong>${date}</strong>.<br />
+        A confirmation email has been sent to <strong>${email}</strong>.<br />
+        We may contact you at <strong>${phone}</strong> if needed.
+      `;
+
+      bookingForm.reset();
+      confirmationSection.classList.remove('hidden');
+      bookingForm.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+ </body>
+</html>
